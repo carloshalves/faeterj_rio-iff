@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<h:panelGrid columns="2" >
+		<p:outputLabel value="Possui Benefício do INSS" for="inss" />
+		<p:selectOneRadio id="inss">
+			<f:selectItem itemLabel="Sim" />
+			<f:selectItem itemLabel="Não" />
+		</p:selectOneRadio>
+		
+		<p:outputLabel value="Possui Bolsa Família" for="bolsa" />
+		<p:selectOneRadio id="bolsa">
+			<f:selectItem itemLabel="Sim" />
+			<f:selectItem itemLabel="Não" />
+		</p:selectOneRadio>
+		
+		<p:outputLabel value="Possui Veículo" for="veiculo" />
+		<p:selectOneRadio id="veiculo">
+			<f:selectItem itemLabel="Sim" />
+			<f:selectItem itemLabel="Não" />
+		</p:selectOneRadio>
+		
+		<p:outputLabel value="Possui acesso a água e esgoto encanado" for="agua" />
+		<p:selectOneRadio id="agua">
+			<f:selectItem itemLabel="Sim" />
+			<f:selectItem itemLabel="Não" />
+		</p:selectOneRadio>
+		
+		<p:outputLabel value="Possui acesso à internet" for="internet" />
+		<p:selectOneRadio id="internet">
+			<f:selectItem itemLabel="Sim" />
+			<f:selectItem itemLabel="Não" />
+		</p:selectOneRadio>
+
+	</h:panelGrid>
+
+
+</ui:composition>
+
+

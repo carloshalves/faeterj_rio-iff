@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+				<h:panelGrid columns="2" style="width:50%">
+					<p:outputLabel value="Possui casa própria" for="casa" />
+					<p:selectOneRadio id="casa">
+						<f:selectItem  itemLabel="Sim"/>
+						<f:selectItem  itemLabel="Não"/>
+					</p:selectOneRadio>
+					
+					<p:outputLabel value="Quantidade de Crianças" for="qtdCri"/>
+	    			<p:inputText id="qtdCri" size="10" />
+	    			
+	    			<p:outputLabel value="Quantidade de Adultos" for="qtdAdu"/>
+	    			<p:inputText id="qtdAdu" size="10" />
+	    		
+	    			<p:outputLabel value="Quantidade de Banheiros" for="qtdBan"/>
+	    			<p:inputText id="qtdBan" size="10" />
+	    			
+	    			
+	    			
+	    		
+					
+					
+					</h:panelGrid>
+			
+
+</ui:composition>
+
+

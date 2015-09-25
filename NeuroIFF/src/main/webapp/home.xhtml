@@ -1,0 +1,43 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="titulo">Home</ui:define>
+
+	<ui:define name="corpo">
+		
+		<br />
+		<h1 style="text-align: center">Seja Bem-Vindo!</h1>
+		
+		
+
+		<f:view contentType="text/html">
+			<p:carousel autoPlayInterval ="12000" rows="1" effect="easeInStrong"
+				circular="true" class="home">
+				<p:graphicImage library="images" name="tomo.gif" class="img-home"/>
+				<p:graphicImage library="images" name="tomo.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="tomo2.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="tomo3.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="tomo4.jpg" class="img-home"/>
+								
+				<p:graphicImage library="images" name="logo2.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo3.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo4.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo5.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo6.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo7.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo8.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo9.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo10.jpg" class="img-home"/>
+				<p:graphicImage library="images" name="logo11.jpg" class="img-home"/>
+				
+				</p:carousel>
+				</f:view>
+	</ui:define>
+</ui:composition>
+
+
