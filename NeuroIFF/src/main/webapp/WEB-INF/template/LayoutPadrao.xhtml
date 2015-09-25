@@ -14,6 +14,14 @@
 </h:head>
 
 <h:body>
+<p:ajaxStatus styleClass="ajax-status">
+	<f:facet name="start">
+		<h:graphicImage library="images" name="loading.gif"/>
+	</f:facet>
+	<f:facet name="complete">
+		<h:outputText value=""/>
+	</f:facet>
+</p:ajaxStatus>
 	<div class="ui-grid ui-grid-responsive">	
 		<div class="ui-grid-row">
 			<div class="ui-grid-col-1"></div>
@@ -41,8 +49,8 @@
 							
 							<p:submenu label="Equipe">
 							<p:submenu label="Médico">
-							<p:menuitem value="Cadastro" />
-							<p:menuitem value="Pesquisa" />
+							<p:menuitem value="Cadastro" outcome="/medico/cadastroMedico"/>
+							<p:menuitem value="Pesquisa" outcome="/medico/pesquisaMedico"/>
 							</p:submenu>
 							<p:submenu label="Pesquisador">
 							<p:menuitem value="Cadastro" />

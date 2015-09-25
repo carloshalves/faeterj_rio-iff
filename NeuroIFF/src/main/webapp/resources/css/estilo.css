@@ -134,6 +134,8 @@ h1 {
 .ui-panelgrid td {
 	height: 40px;
 	width: 20px;
+	/* cor de fundo do panelGrid - background-color: #c0c0c0; */
+	
 }
 
 .ui-panelgrid td > label{
@@ -146,7 +148,7 @@ h1 {
 .ajax-status {
 	position: fixed;
 	top: 130px;
-	right: 10px;
+	left: 1200px;
 	width: 35px;
 	height: 35px;
 }
@@ -223,10 +225,20 @@ a {
 	float: left;
 }
 
-/* position-relative; .ui-carousel .ui-widget .ui-widget-content .ui-corner-all margin:0 auto !important; margin-left: 40% !important;*/
-.ui-carousel .ui-widget-content {	
+/*Imagens no Home -  position-relative; .ui-carousel .ui-widget .ui-widget-content .ui-corner-all margin:0 auto !important; margin-left: 40% !important;*/
+.ui-carousel{	
 	margin:0 auto !important;
+	margin-left: 30% !important;
 }
 
+.ui-widget-content{
+	
+}
+
+.img-home{
+	width: 400px;
+	height: 200px;
+	
+}
 
 
