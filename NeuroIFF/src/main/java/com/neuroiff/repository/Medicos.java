@@ -4,17 +4,18 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import com.neuroiff.model.Medico;
 
-
+@Named
 public class Medicos implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	//@Inject
+	@Inject
 	private EntityManager manager;
 
 	public Medicos(EntityManager manager) {
