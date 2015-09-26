@@ -5,21 +5,27 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
+	<f:metadata>
+		<f:viewAction action="#{cadastroMedico.prepararCadastro}" />
+			<f:viewAction action="#{consultaMedico.consultar}" />
+	</f:metadata>
 
-	<ui:define name="titulo">Cadastrar Paciente</ui:define>
+
+	<ui:define name="titulo">#{cadastroMedico.editando ? 'Edição de Médico' : 'Novo Médico'}</ui:define>
 
 
 	<ui:define name="corpo">
-		
+
 		<div class="ui-fluid">
 			<h:form>
+				<p:messages id="msg"/>
 				<h1>Novo Médico</h1>
 				<p:toolbar style="margin-top:20px;">
 					<p:toolbarGroup>
 						<p:button value="Novo" outcome="/medico/cadastroMedico"
 							icon="ui-icon-document" />
 						<p:commandButton value="Salvar" icon="ui-icon-disk"
-									action="#{cadastroMedicoBean.salvar}" update="@form"/>
+							action="#{cadastroMedico.salvar}" update="@form msg" />
 					</p:toolbarGroup>
 					<p:toolbarGroup align="right">
 						<p:button value="Pesquisa" outcome="/medico/pesquisaMedico"
@@ -32,46 +38,20 @@
 
 
 					<p:outputLabel value="Nome" for="nome" />
-					<p:inputText id="nome" size="50" maxlength="70" value="#{cadastroMedicoBean.medico.nome}"/>
+					<p:inputText id="nome" size="50" maxlength="70" value="#{cadastroMedico.medico.nome}"/>
 
 					<p:outputLabel value="CRM" for="registro" />
-					<p:inputText id="registro" size="20" maxlength="50" value="#{cadastroMedicoBean.medico.crm}"/>
+					<p:inputText id="registro" size="20" maxlength="50" value="#{cadastroMedico.medico.crm}"/>
 
 					<p:outputLabel value="Especialidade" for="especialidade" />
-					<p:inputText id="especialidade" size="50" maxlength="100" value="#{cadastroMedicoBean.medico.especialidade}"/>
+					<p:inputText id="especialidade" size="50" maxlength="100" value="#{cadastroMedico.medico.especialidade}"/>
 
 
 				</p:panelGrid>
-				<p:separator style="padding:5px;" />
+				<p:separator style="padding:10px;" />
 
 
-				<p:dataTable id="medicosTable"
-					emptyMessage="Nenhum médico encontrado" rows="5" paginator="true"
-					paginatorAlwaysVisible="false" paginatorPosition="bottom">
-
-
-					<p:column headerText="Nome">
-						<h:outputText value="#{cadastroMedicoBean.medico.nome}" />
-					</p:column>
-
-					<p:column headerText="CRM">
-						<h:outputText value="#{cadastroMedicoBean.medico.crm}"/>
-					</p:column>
-
-					<p:column headerText="Especialidade">
-						<h:outputText value="#{cadastroMedicoBean.medico.especialidade}" />
-					</p:column>
-
-
-					<p:column headerText="Ações"
-						style="text-align: center; width: 100px">
-						<p:button icon="ui-icon-pencil" title="Editar" />
-						<p:commandButton icon="ui-icon-trash" title="Excluir" />
-
-					</p:column>
-
-				</p:dataTable>
-
+				
 			</h:form>
 
 		</div>

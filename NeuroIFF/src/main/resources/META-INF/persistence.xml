@@ -6,14 +6,25 @@
 	<persistence-unit name="NeuroIFF_PU">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://maquinasfi.cd5oi7opap0f.us-west-2.rds.amazonaws.com/neuro_iff" />
+		<!-- 
+		
+		
+		<property name="javax.persistence.jdbc.url" value="jdbc:mysql://maquinasfi.cd5oi7opap0f.us-west-2.rds.amazonaws.com/neuro_iff" />
 			<property name="javax.persistence.jdbc.user" value="maquinasfi" />
 			<property name="javax.persistence.jdbc.password" value="maquinasfi" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+		
+		
+		 -->
+		
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/neuro_iff" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="1234" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			
-			<property name="hibernate.hbm2ddl.auto" value="create" />
-			<!--alterar para create  / updatequando for resetar o bd-->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!--alterar para create  / update quando for resetar o bd-->
 			
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />

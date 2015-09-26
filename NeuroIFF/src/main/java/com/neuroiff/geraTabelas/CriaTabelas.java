@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import com.neuroiff.model.Medico;
 import com.neuroiff.util.jpa.EntityManagerProducer;
+import com.neuroiff.util.jpa.JpaUtil;
 
 public class CriaTabelas {
 
@@ -14,16 +15,19 @@ public class CriaTabelas {
 
 		// Persistence.createEntityManagerFactory("NeuroIFF_PU");
 
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("NeuroIFF_PU");
-		EntityManager manager = factory.createEntityManager();
+		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("NeuroIFF_PU");
+		//EntityManager manager = factory.createEntityManager();
+		
+		
+		EntityManager manager = JpaUtil.getEntityManager();
 
 		EntityTransaction trx = manager.getTransaction();
 		trx.begin();
 
 		Medico medico = new Medico();
-		medico.setCrm(52345L);
-		medico.setEspecialidade("Neurologia");
-		medico.setNome("Paulo da Silva");
+		medico.setCrm(523489L);
+		medico.setEspecialidade("Psiquiatria");
+		medico.setNome("Aline Fraga");
 
 		manager.persist(medico);
 		trx.commit();

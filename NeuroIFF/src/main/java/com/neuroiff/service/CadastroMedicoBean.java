@@ -3,24 +3,23 @@ package com.neuroiff.service;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 
 import com.neuroiff.model.Medico;
 import com.neuroiff.repository.Medicos;
 import com.neuroiff.util.jsf.FacesUtil;
 
-@Named
+@ManagedBean(name ="CadastroMedicoBean2" )
 @ViewScoped
 public class CadastroMedicoBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
+	
 	private Medicos medicos;
 	
-	@Inject
+	
 	private Medico medico;
 	
 	

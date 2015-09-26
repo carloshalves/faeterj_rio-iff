@@ -12,15 +12,17 @@
 	<ui:define name="corpo">
 		<div class="ui-fluid">
 			<f:metadata>
-				<f:viewAction action="#{medicoBean.consultar}" />
+				<f:viewAction action="#{consultaMedico.consultar}" />
 			</f:metadata>
-			<h:form>
+
+			<h:form id="frmPesquisa">
+				<p:messages id="msg" />
 				<h1>Pesquisa de Médico</h1>
 				<p:toolbar style="margin-top:20px;">
 					<p:toolbarGroup>
 						<p:button value="Novo" outcome="/medico/cadastroMedico"
 							icon="ui-icon-document" />
-						<p:commandButton value="Salvar" icon="ui-icon-disk" />
+
 					</p:toolbarGroup>
 					<p:toolbarGroup align="right">
 						<p:button value="Pesquisa" outcome="/medico/pesquisaMedico"
@@ -28,63 +30,68 @@
 					</p:toolbarGroup>
 				</p:toolbar>
 
-				<p:panelGrid columns="2" id="painel" columnClasses="rotulo, campo"
-					style="width:100%; margin-top:10px;">
 
-
-					<p:outputLabel value="Nome" for="nome" />
-					<p:inputText id="nome" size="50" maxlength="70" />
-
-					<p:outputLabel value="CRM" for="registro" />
-					<p:inputText id="registro" size="20" maxlength="50" />
-
-					<p:outputLabel value="Especialidade" for="especialidade" />
-					<p:inputText id="especialidade" size="50" maxlength="80" />
-
-
-				</p:panelGrid>
 				<p:separator style="padding:5px;" />
 
 
-				<p:dataTable id="medicosTable" value="#{medicoBean.medicos}" var="medico"
-					emptyMessage="Nenhum médico encontrado" rows="5" paginator="true"
-					paginatorAlwaysVisible="false" paginatorPosition="bottom"
-					rowsPerPageLabel="5, 10, 15, 20" scrollable="true" scrollHeight="5">
+				<p:dataTable id="medicosTable" value="#{consultaMedico.medicos}"
+					var="medico" emptyMessage="Nenhum médico encontrado" rows="5"
+					paginator="true" paginatorAlwaysVisible="false"
+					paginatorPosition="bottom" rowsPerPageLabel="5, 10, 15, 20"
+					scrollable="true">
 
-					<f:facet name="header">
-       				Médicos Cadastrados
- 
+					<f:facet name="header">	Médicos Cadastrados</f:facet>
+
+					<!--
         				<p:commandButton id="medicosTable" type="button"
 							value="Campos" style="float:right" icon="ui-icon-calculator" />
 						<p:columnToggler datasource="medicosTable" trigger="medicosTable" />
 					</f:facet>
 
-					<!-- adicionar ordenação e pesquisa: sortBy="EL" na coluna 
+					 adicionar ordenação e pesquisa: sortBy="EL" na coluna 
 						e para ordenação padrão add tb no dataTable
 						sortMode="multiple" - combina ordenação
 						filteredValue="EL"
 						-->
-					<p:column headerText="Nome" filterBy="">
-						<h:outputText  value="#{medico.nome}"/ />
+					<p:column headerText="Nome" sortBy="#{medico.nome}"
+						filterBy="#{medico.nome}">
+						<h:outputText value="#{medico.nome}" />
 					</p:column>
 
-					<p:column headerText="CRM">
+					<p:column headerText="CRM" sortBy="#{medico.crm}"
+						filterBy="#{medico.crm}">
 						<h:outputText value="#{medico.crm}" />
 					</p:column>
 
-					<p:column headerText="Especialidade">
-						<h:outputText value="#{medico.especialidade}"/>
+					<p:column headerText="Especialidade"
+						sortBy="#{medico.especialidade}"
+						filterBy="#{medico.especialidade}">
+						<h:outputText value="#{medico.especialidade}" />
 					</p:column>
 
 
 					<p:column headerText="Ações"
 						style="text-align: center; width: 100px">
-						<p:button icon="ui-icon-pencil" title="Editar" />
-						<p:commandButton icon="ui-icon-trash" title="Excluir" />
+						<p:button icon="ui-icon-pencil" title="Editar" outcome="/medico/cadastroMedico">
+							<f:param name="medico" value="#{medico.id}" />
+						</p:button>
 
+						<p:commandButton icon="ui-icon-trash" title="Excluir"
+							oncomplete="PF('confirmacaoExclusao').show()" process="@this"
+							update=":frmPesquisa:confirmacaoExclusaoDialog" />
 					</p:column>
 
 				</p:dataTable>
+
+				<p:confirmDialog header="Exclusão de medico"
+					message="Tem certeza que deseja excluir o medico #{medico.nome}"
+					widgetVar="confirmacaoExclusao" id="confirmacaoExclusaoDialog">
+					<p:button value="Não"
+						oncomplete="confirmacaoExclusao.hide(); return false;" />
+					<p:commandButton value="Sim"
+						oncomplete="PF('confirmacaoExclusao').hide();" process="@this"
+						update=":frmPesquisa:medicosTable" />
+				</p:confirmDialog>
 
 			</h:form>
 
