@@ -14,7 +14,7 @@ public class EntityManagerProducer {
 	private EntityManagerFactory factory;
 
 	public EntityManagerProducer() {
-		factory = Persistence.createEntityManagerFactory("PedidoPU");
+		factory = Persistence.createEntityManagerFactory("NeuroIFF_PU");
 	}
 	
 	
@@ -22,6 +22,7 @@ public class EntityManagerProducer {
 	public EntityManager createEntityManager (){
 		
 		return factory.createEntityManager();
+		
 	}
 	
 	public void closeEntityManager(@Disposes EntityManager manager){

@@ -2,6 +2,14 @@ package com.neuroiff.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity 
+@Table(name = "medico")
 public class Medico implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -11,6 +19,9 @@ public class Medico implements Serializable{
 	private String nome;
 	private String especialidade;
 		
+	public Medico() {
+		
+	}
 	public Medico(Long crm, String nome, String especialidade) {
 		super();
 		this.crm = crm;
@@ -22,7 +33,8 @@ public class Medico implements Serializable{
 	
 	
 	
-	
+	@Id 
+	@GeneratedValue 
 	public Long getId() {
 		return id;
 	}
@@ -40,7 +52,7 @@ public class Medico implements Serializable{
 
 
 
-
+	@Column(name = "crm_med",nullable = false) 
 	public Long getCrm() {
 		return crm;
 	}
@@ -58,7 +70,7 @@ public class Medico implements Serializable{
 
 
 
-
+	@Column(name = "nome_med", nullable = false) 
 	public String getNome() {
 		return nome;
 	}
@@ -76,7 +88,7 @@ public class Medico implements Serializable{
 
 
 
-
+	@Column(length = 100, nullable = false) 
 	public String getEspecialidade() {
 		return especialidade;
 	}

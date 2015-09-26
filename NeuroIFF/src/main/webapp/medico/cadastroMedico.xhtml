@@ -10,62 +10,69 @@
 
 
 	<ui:define name="corpo">
+		<f:metadata>			
+			<f:event listener="#{cadastroMedicoBean.inicializar}"
+				type="preRenderView" />
+		</f:metadata>
 		<div class="ui-fluid">
 			<h:form>
 				<h1>Novo Médico</h1>
 				<p:toolbar style="margin-top:20px;">
 					<p:toolbarGroup>
-						<p:button value="Novo" outcome="/medico/cadastroMedico" 
-								icon="ui-icon-document"/>
-						<p:commandButton value="Salvar" icon="ui-icon-disk"/>
+						<p:button value="Novo" outcome="/medico/cadastroMedico"
+							icon="ui-icon-document" />
+						<p:commandButton value="Salvar" icon="ui-icon-disk"
+									action="#{cadastroMedicoBean.salvar}" update="@form"/>
 					</p:toolbarGroup>
 					<p:toolbarGroup align="right">
-						<p:button value="Pesquisa" outcome="/medico/pesquisaMedico" icon="ui-icon-search"/>
+						<p:button value="Pesquisa" outcome="/medico/pesquisaMedico"
+							icon="ui-icon-search" />
 					</p:toolbarGroup>
 				</p:toolbar>
 
-				<p:panelGrid columns="2" id="painel" columnClasses="rotulo, campo" 
-							style="width:100%; margin-top:10px;">
+				<p:panelGrid columns="2" id="painel" columnClasses="rotulo, campo"
+					style="width:100%; margin-top:10px;">
 
-					
+
 					<p:outputLabel value="Nome" for="nome" />
-					<p:inputText id="nome" size="50" maxlength="70" />
+					<p:inputText id="nome" size="50" maxlength="70" value="#{cadastroMedicoBean.medico.nome}"/>
 
 					<p:outputLabel value="CRM" for="registro" />
-					<p:inputText id="registro" size="20" maxlength="50" />
-					
+					<p:inputText id="registro" size="20" maxlength="50" value="#{cadastroMedicoBean.medico.crm}"/>
+
 					<p:outputLabel value="Especialidade" for="especialidade" />
-					<p:inputText id="especialidade" size="50" maxlength="80" />				
+					<p:inputText id="especialidade" size="50" maxlength="100" value="#{cadastroMedicoBean.medico.especialidade}"/>
 
 
 				</p:panelGrid>
-				<p:separator style="padding:5px;"/>
-				
-				
-				<p:dataTable id="medicosTable" 
-						 emptyMessage="Nenhum médico encontrado" rows="5"
-						paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
-			
-						
-						<p:column headerText="Nome">
-							<h:outputText value="Siclano da Silva"/>
-						</p:column>
-						
-						<p:column headerText="CRM">
-							<h:outputText value="54321-90"/>
-						</p:column>
-						
-						<p:column headerText="Especialidade">
-							<h:outputText value="Neurologia"/>
-						</p:column>
-						
-					
-						<p:column headerText="Ações" style="text-align: center; width: 100px">
-							<p:button icon="ui-icon-pencil" title="Editar"/>
-							<p:commandButton icon="ui-icon-trash" title="Excluir" />	
-																			
-						</p:column>
-			
+				<p:separator style="padding:5px;" />
+
+
+				<p:dataTable id="medicosTable"
+					emptyMessage="Nenhum médico encontrado" rows="5" paginator="true"
+					paginatorAlwaysVisible="false" paginatorPosition="bottom">
+
+
+					<p:column headerText="Nome">
+						<h:outputText value="#{cadastroMedicoBean.medico.nome}" />
+					</p:column>
+
+					<p:column headerText="CRM">
+						<h:outputText value="#{cadastroMedicoBean.medico.crm}"/>
+					</p:column>
+
+					<p:column headerText="Especialidade">
+						<h:outputText value="#{cadastroMedicoBean.medico.especialidade}" />
+					</p:column>
+
+
+					<p:column headerText="Ações"
+						style="text-align: center; width: 100px">
+						<p:button icon="ui-icon-pencil" title="Editar" />
+						<p:commandButton icon="ui-icon-trash" title="Excluir" />
+
+					</p:column>
+
 				</p:dataTable>
 
 			</h:form>

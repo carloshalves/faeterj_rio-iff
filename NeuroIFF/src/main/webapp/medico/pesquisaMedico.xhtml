@@ -11,6 +11,9 @@
 
 	<ui:define name="corpo">
 		<div class="ui-fluid">
+			<f:metadata>
+				<f:viewAction action="#{medicoBean.consultar}" />
+			</f:metadata>
 			<h:form>
 				<h1>Pesquisa de Médico</h1>
 				<p:toolbar style="margin-top:20px;">
@@ -43,7 +46,7 @@
 				<p:separator style="padding:5px;" />
 
 
-				<p:dataTable id="medicosTable"
+				<p:dataTable id="medicosTable" value="#{medicoBean.medicos}" var="medico"
 					emptyMessage="Nenhum médico encontrado" rows="5" paginator="true"
 					paginatorAlwaysVisible="false" paginatorPosition="bottom"
 					rowsPerPageLabel="5, 10, 15, 20" scrollable="true" scrollHeight="5">
@@ -51,8 +54,8 @@
 					<f:facet name="header">
        				Médicos Cadastrados
  
-        				<p:commandButton id="medicosTable" type="button" value="Campos"
-							style="float:right" icon="ui-icon-calculator" />
+        				<p:commandButton id="medicosTable" type="button"
+							value="Campos" style="float:right" icon="ui-icon-calculator" />
 						<p:columnToggler datasource="medicosTable" trigger="medicosTable" />
 					</f:facet>
 
@@ -62,15 +65,15 @@
 						filteredValue="EL"
 						-->
 					<p:column headerText="Nome" filterBy="">
-						<h:outputText value="Siclano da Silva" />
+						<h:outputText  value="#{medico.nome}"/ />
 					</p:column>
 
 					<p:column headerText="CRM">
-						<h:outputText value="54321-90" />
+						<h:outputText value="#{medico.crm}" />
 					</p:column>
 
 					<p:column headerText="Especialidade">
-						<h:outputText value="Neurologia" />
+						<h:outputText value="#{medico.especialidade}"/>
 					</p:column>
 
 
